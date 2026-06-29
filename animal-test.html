@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물상 테스트 🐾</title>
+    <link rel="stylesheet" href="animal-test.css">
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 메인으로</a>
+
+        <div class="hero">
+            <h1>🐾 동물상 테스트</h1>
+            <p class="subtitle">내 얼굴은 강아지상? 고양이상?<br>AI가 분석해드려요!</p>
+        </div>
+
+        <!-- 업로드 영역 -->
+        <div class="upload-area" id="upload-area">
+            <div class="upload-icon">📸</div>
+            <p>사진을 드래그하거나 버튼을 눌러주세요</p>
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="upload-btn">📁 사진 올리기</button>
+                <button class="btn btn-secondary" id="camera-btn">📷 카메라 촬영</button>
+            </div>
+        </div>
+
+        <!-- 웹캠 영역 -->
+        <div class="webcam-section" id="webcam-section" hidden>
+            <video id="webcam" autoplay playsinline></video>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="capture-btn">📸 촬영하기</button>
+                <button class="btn btn-outline" id="cancel-camera-btn">취소</button>
+            </div>
+        </div>
+
+        <!-- 미리보기 -->
+        <div class="preview-section" id="preview-section" hidden>
+            <img id="preview-img" alt="업로드된 사진">
+            <canvas id="canvas" hidden></canvas>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="analyze-btn">🔍 분석하기</button>
+                <button class="btn btn-outline" id="reupload-btn">↩ 다시 선택</button>
+            </div>
+        </div>
+
+        <!-- 로딩 -->
+        <div class="loading" id="loading" hidden>
+            <div class="paw-loader">🐾</div>
+            <p>AI가 분석 중이에요...</p>
+        </div>
+
+        <!-- 결과 -->
+        <div class="result-section" id="result-section" hidden>
+            <div class="result-preview">
+                <img id="result-img" alt="분석된 사진">
+            </div>
+            <div class="result-title" id="result-title"></div>
+            <div class="result-bars">
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>🐶 강아지상</span>
+                        <span class="percentage" id="dog-percent">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill dog-fill" id="dog-bar"></div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>🐱 고양이상</span>
+                        <span class="percentage" id="cat-percent">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill cat-fill" id="cat-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-description" id="result-description"></div>
+            <button class="btn btn-primary" id="retry-btn">🔄 다시 테스트하기</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="animal-test.js"></script>
+</body>
+</html>

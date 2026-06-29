@@ -61,6 +61,24 @@ button {
     cursor: pointer;
 }
 
+.animal-test-link {
+    display: inline-block;
+    margin: 12px 0 20px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #ff8a65, #7c4dff);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.animal-test-link:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
 .contact {
     margin-top: 40px;
     text-align: left;
