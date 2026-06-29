@@ -34,3 +34,32 @@ generateBtn.addEventListener('click', () => {
         numbersDiv.appendChild(numberDiv);
     });
 });
+
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-status');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    contactStatus.textContent = '전송 중...';
+
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            contactStatus.textContent = '문의가 전송되었습니다. 감사합니다!';
+            contactForm.reset();
+        } else {
+            contactStatus.textContent = '전송에 실패했습니다. 다시 시도해주세요.';
+        }
+    } catch (error) {
+        contactStatus.textContent = '전송에 실패했습니다. 다시 시도해주세요.';
+    } finally {
+        submitBtn.disabled = false;
+    }
+});
